@@ -10,7 +10,7 @@ import (
 type Entry struct { //struct is your own datatype
 	ID         primitive.ObjectID `bson:"id"`   //id is created by golanf
 	Dish       *string            `json:"dish"` //we are passing the dish that's why we are using reference
-	Fat        *float64           `json:"fat"`
+	Fat        *string            `json:"fat"`
 	Ingredient *string            `json:"ingredients"`
 	Calories   *string            `json:"calories"`
 }

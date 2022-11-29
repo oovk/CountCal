@@ -11,7 +11,7 @@ import (
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "8000"
 	}
 
 	router := gin.New()
@@ -20,7 +20,7 @@ func main() {
 
 	router.POST("/entry/create", routes.AddEntry)
 	router.GET("/entries", routes.GetEntries)
-	router.GET("/entry/:id/", routes.GetEntryById)
+	router.GET("/entry/:id", routes.GetEntryById)
 	router.GET("/ingredient/:ingredient", routes.GetEntriesByIngredient)
 
 	router.PUT("/entry/update/:id", routes.UpdateEntry)

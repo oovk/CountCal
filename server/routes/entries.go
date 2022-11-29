@@ -162,11 +162,13 @@ func UpdateIngredient(c *gin.Context) {
 		return
 	}
 
-	result, err := entryCollection.UpdateOne(
-		ctx,
-		bson.M{"_id": docID},
-		bson.D{{"$set", bson.D{{"ingredients", ingredient.Ingredients}}}},
-	)
+	update := bson.M{
+		"$set": bson.M{
+			"ingredients": ingredient.Ingredients,
+		},
+	}
+
+	result, err := entryCollection.UpdateOne(ctx, bson.M{"_id": docID}, update)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		fmt.Println(err)
